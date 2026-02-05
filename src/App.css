@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.screen {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+.sideBar {
+  height: 100vh;
+  width: 400px;
+  padding-top: 10px;
+  gap: 10px;
+  background-color: rgb(244, 238, 238);
+  color: black;
+}
+
+.folder-row {
+  cursor: pointer;
+}
+
+.add-btn {
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+.add-file-btn {
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+.folder-children {
+  padding-left: 25px;
+}
+
+.input-box {
+  background: white;
+  color: black;
+}
