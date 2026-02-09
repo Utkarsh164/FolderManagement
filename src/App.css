@@ -1,42 +1,83 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
 }
 
 .screen {
   height: 100vh;
   width: 100vw;
   display: flex;
+  background: #e5e7eb;
 }
 
+/* Sidebar */
 .sideBar {
   height: 100vh;
-  width: 400px;
-  padding-top: 10px;
-  gap: 10px;
-  background-color: rgb(244, 238, 238);
-  color: black;
+  width: 320px;
+  padding: 12px;
+  background: #1f2933;   /* dark bg */
+  color: #f9fafb;        /* visible text */
+  overflow-y: auto;
 }
 
+/* Folder row */
 .folder-row {
   cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  display: inline-block;
 }
 
-.add-btn {
-  margin-left: 12px;
-  cursor: pointer;
+.folder-row:hover {
+  background-color: #374151;
 }
 
+/* Add buttons */
+.add-btn,
 .add-file-btn {
-  margin-left: 2px;
+  margin-left: 6px;
   cursor: pointer;
+  font-size: 12px;
+  opacity: 0.8;
 }
 
+.add-btn:hover,
+.add-file-btn:hover {
+  opacity: 1;
+}
+
+/* Children indentation */
 .folder-children {
-  padding-left: 25px;
+  padding-left: 18px;
+  margin-top: 4px;
+  border-left: 1px dashed #4b5563;
 }
 
+/* Input */
 .input-box {
-  background: white;
-  color: black;
+  margin-left: 6px;
+  padding: 3px 6px;
+  border: 1px solid #9ca3af;
+  border-radius: 4px;
+  outline: none;
+  font-size: 13px;
+  background: #111827;
+  color: white;
+}
+
+.input-box:focus {
+  border-color: #60a5fa;
+}
+
+/* File row */
+.file-row {
+  padding: 4px 6px;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.file-row:hover {
+  background-color: #374151;
 }
