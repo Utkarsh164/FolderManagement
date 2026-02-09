@@ -43,29 +43,37 @@ const Folder = ({ handleAddChild, data }) => {
         </div>
         <div
           className="folder-children"
-          style={{ display: open ? "block" : "none" }}
+          //style={{ display: open ? "block" : "none" }}
         >
-          {input.visiblity && (
-            <div>
-              <span>{input.isdirectory ? "📂" : "📄"}</span>
-              <input
-                type="text"
-                autoFocus
-                className="input-box"
-                onBlur={() => {
-                  setInput({ ...input, visiblity: false });
-                }}
-                onKeyDown={(e) => {
-                  addChild(e);
-                }}
-              />
-            </div>
+          {open && (
+            <>
+              {input.visiblity && (
+                <div>
+                  <span>{input.isdirectory ? "📂" : "📄"}</span>
+                  <input
+                    type="text"
+                    autoFocus
+                    className="input-box"
+                    onBlur={() => {
+                      setInput({ ...input, visiblity: false });
+                    }}
+                    onKeyDown={(e) => {
+                      addChild(e);
+                    }}
+                  />
+                </div>
+              )}
+              {data.child.map((obj) => {
+                return (
+                  <Folder
+                    key={obj.id}
+                    handleAddChild={handleAddChild}
+                    data={obj}
+                  />
+                );
+              })}
+            </>
           )}
-          {data.child.map((obj) => {
-            return (
-              <Folder key={obj.id} handleAddChild={handleAddChild} data={obj} />
-            );
-          })}
         </div>
       </div>
     );
