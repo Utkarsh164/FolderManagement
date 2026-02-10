@@ -11,11 +11,22 @@ const useTraverseTree = () => {
     }
     let latest = [];
 
-    latest =tree.child.map((childeNode) => {
-        return insertChild(childeNode, folderId, name, isFolder);
-      })
-    return { ...tree, child:latest };
+    latest = tree.child.map((childeNode) => {
+      return insertChild(childeNode, folderId, name, isFolder);
+    });
+    return { ...tree, child: latest };
   };
-  return { insertChild };
+
+  const deleteNode = (currentNode, nodeId) => {
+    if (!currentNode.child) return currentNode;
+    let latest = [];
+    latest = currentNode.child
+      .filter((check) => check.id !== nodeId)
+      .map((childNode) => deleteNode(childNode, nodeId));
+    return { ...currentNode, child: latest };
+  };
+
+
+  return { insertChild, deleteNode };
 };
 export default useTraverseTree;

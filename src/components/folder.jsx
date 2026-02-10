@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Folder = ({ handleAddChild, data }) => {
+const Folder = ({ handleAddChild, handleDelete, data }) => {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState({ visiblity: false, isdirectory: null });
   const openFolder = () => {
@@ -40,6 +40,8 @@ const Folder = ({ handleAddChild, data }) => {
           >
             +📄
           </span>
+
+          <span onClick={()=>handleDelete(data.id)}>🗑️</span>
         </div>
         <div
           className="folder-children"
@@ -68,6 +70,7 @@ const Folder = ({ handleAddChild, data }) => {
                   <Folder
                     key={obj.id}
                     handleAddChild={handleAddChild}
+                    handleDelete={handleDelete}
                     data={obj}
                   />
                 );

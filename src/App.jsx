@@ -6,16 +6,25 @@ import useTraverseTree from "./hooks/useTraverseTree";
 
 function App() {
   const [explorerData, setExplorerData] = useState(folderData);
-  const { insertChild } = useTraverseTree();
+  const { insertChild, deleteNode } = useTraverseTree();
   const handleAddChild = (folderId, name, isFolder) => {
-    var newTree = insertChild(explorerData, folderId, name, isFolder);
+    let newTree = insertChild(explorerData, folderId, name, isFolder);
+    setExplorerData(newTree);
+  };
+
+  const handleDelete = (nodeId) => {
+    let newTree = deleteNode(explorerData, nodeId);
     setExplorerData(newTree);
   };
 
   return (
     <div className="screen">
       <div className="sideBar">
-        <Folder handleAddChild={handleAddChild} data={explorerData} />
+        <Folder
+          handleAddChild={handleAddChild}
+          handleDelete={handleDelete}
+          data={explorerData}
+        />
       </div>
     </div>
   );
